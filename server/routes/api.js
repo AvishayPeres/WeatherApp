@@ -1,6 +1,7 @@
 const express = require('express')
 const request = require('request')
 const router = express.Router()
+
 const City = require('../model/City')
 
 const API_KEY = '192b5268fbc94ca5b5481657191104'
