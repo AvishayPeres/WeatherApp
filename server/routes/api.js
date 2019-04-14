@@ -2,7 +2,7 @@ const express = require('express')
 const request = require('request')
 const router = express.Router()
 
-const City = require('../model/City')
+const City = require('./model/City')
 
 const API_KEY = '192b5268fbc94ca5b5481657191104'
 
@@ -22,13 +22,13 @@ router.get('/city/:cityName', function (req, res) {
     res.send(cityInfo)
 })
 
-router.get('/cities', function (req, res) {
+router.get(',/cities', function (req, res) {
     City.find({}, function (err, cities) {
         res.send(cities)
     })
 })
 
-router.post('/city', function (req, res) {
+router.post('./city', function (req, res) {
     let cityData = req.body
 
     let newCity = new City({
