@@ -2,12 +2,12 @@ const express = require('express')
 const request = require('request')
 const router = express.Router()
 
-const City = require('./model/City')
+const City = require('../model/City')
 
 const API_KEY = '192b5268fbc94ca5b5481657191104'
 
 
-router.get('/city/:cityName', function (req, res) {
+router.get('./city/:cityName', function (req, res) {
     let cityName = req.params.city
     request(`http://api.apixu.com/v1/forecast.json?key=(${API_KEY}&q=${cityName})`)
     let weatherInfo = JSON.parse(response.body)
@@ -22,7 +22,7 @@ router.get('/city/:cityName', function (req, res) {
     res.send(cityInfo)
 })
 
-router.get(',/cities', function (req, res) {
+router.get('./cities', function (req, res) {
     City.find({}, function (err, cities) {
         res.send(cities)
     })
@@ -45,7 +45,7 @@ router.post('./city', function (req, res) {
     })
 })
 
-router.delete('/city/:cityName', function (req, res) {
+router.delete('./city/:cityName', function (req, res) {
     let cityName = req.params.cityName
     City.deleteOne({ name: cityName }, function (err, response) {
         res.send(`${cityName}: deleted.`)
