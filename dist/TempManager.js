@@ -10,7 +10,7 @@ class APImanager {
         let city = await $.get(`/city/${cityName}`)
         city.new = true
         
-        this._cityData.push(city)
+        this.cityData.push(city)
     }
     saveCity(cityName) {
         let inputCity
@@ -28,8 +28,9 @@ class APImanager {
         this._cityData.splice(cityIndex, 1)
 
         $.ajax({
-            url: `./city/${cityName}`,
+            url: `/city/${cityName}`,
             method: "DELETE",
             success: function (response) { }
         })
     }
+}
