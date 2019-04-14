@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-mongoose.connect("mongodb://localhost/weatherAppDB", { useNewUrlParser: true })
 
 const Schema = mongoose.Schema
 
@@ -13,3 +12,5 @@ const citySchema = new Schema({
 
 
 const City = mongoose.model("City", citySchema)
+
+module.exports = City
