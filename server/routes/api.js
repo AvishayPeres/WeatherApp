@@ -48,7 +48,7 @@ router.post('/city', function (req, res) {
 router.delete('/city/:cityName', function (req, res) {
     let cityName = req.params.cityName
     City.deleteOne({ name: cityName }, function (err, response) {
-        res.send(`${cityName}: deleted`)
+        res.send(`${cityName}: deleted.`)
     })
 })
 

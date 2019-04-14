@@ -6,28 +6,30 @@ class APImanager {
         let getData = await $.get(`/cities`)
         this.cityData = getData
     }
-    getCityData(cityName) {
-        $.get(`/City/:${cityName}`, function (city) {
-            this.cityData.push(city)
-        })
+    async getCityData(cityName) {
+        let city = await $.get(`/city/${cityName}`)
+        city.new = true
+        
+        this._cityData.push(city)
     }
     saveCity(cityName) {
-        let chosenCity
+        let inputCity
         for (let city of cityData) {
-            if (City.name == cityName) {
-                chosenCity = city
+            if (city.name == cityName) {
+                inputCity = city
             }
         }
-        $.post(`/city/`, chosenCity, function (city) {
+        $.post(`/city/`, inputCity, function (city) {
         })
     }
+
     removeCity(cityName) {
+        let cityIndex = this._cityData.findIndex(c => c.name === cityName)
+        this._cityData.splice(cityIndex, 1)
+
         $.ajax({
-            url: `/city/${cityName}`,
-            type: 'delete',
-            success: function (city) {
-                console.log("deleted")
-            }
+            url: `./city/${cityName}`,
+            method: "DELETE",
+            success: function (response) { }
         })
     }
-}
