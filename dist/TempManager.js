@@ -1,11 +1,15 @@
-class APImanager {
+class TempManager {
     constructor() {
         this.cityData = []
     }
+
     async getDataFromDB() {
         let getData = await $.get(`/cities`)
         this.cityData = getData
+        console.log(this.cityData)
+        
     }
+
     async getCityData(cityName) {
         let city = await $.get(`/city/${cityName}`)
         city.new = true
